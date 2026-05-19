@@ -1,12 +1,14 @@
 import type { ExamManifest } from '../types/exam';
 import type { Question } from '../types/question';
 import { amsUmlManifest } from './exams/ams-uml/manifest';
+import { tsiManifest } from './exams/tsi/manifest';
 
 // ---- Exam registry -------------------------------------------------------
 // To add a new exam: create src/data/exams/<id>/manifest.ts and add it here.
 
 export const examRegistry: ExamManifest[] = [
   amsUmlManifest,
+  tsiManifest,
 ];
 
 // ---- Question loaders (lazy, per-exam) ------------------------------------
@@ -16,6 +18,8 @@ type QuestionLoader = () => Promise<Question[]>;
 const loaders: Record<string, QuestionLoader> = {
   'ams-uml': () =>
     import('./index').then(m => m.allQuestions),
+  'tsi': () =>
+    import('./tsi-index').then(m => m.tsiAllQuestions),
 };
 
 /** Load all questions for an exam. Returns [] if examId is unknown. */

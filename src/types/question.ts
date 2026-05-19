@@ -1,6 +1,7 @@
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'trap';
 
 export type Topic =
+  // AMS-UML topics
   | 'general'
   | 'use-case'
   | 'class'
@@ -9,7 +10,17 @@ export type Topic =
   | 'sequence'
   | 'collaboration'
   | 'component'
-  | 'deployment';
+  | 'deployment'
+  // TSI topics
+  | 'intro'
+  | 'malware'
+  | 'vectori'
+  | 'atacuri'
+  | 'acces'
+  | 'criptografie'
+  | 'pki'
+  | 'disponibilitate'
+  | 'endpoint';
 
 export interface Question {
   id: string;
